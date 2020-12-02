@@ -1,9 +1,13 @@
+import { Body } from "./components/Body/Body";
+import { Footer } from "./components/Footer/Footer";
+import { Header } from "./components/Header/Header";
+
 function App() {
   return (
     <div className="App">
-      <div>Header</div>
-      <div>Body</div>
-      <div>Footer</div>
+      <Header/>
+      <Body/>
+      <Footer/>
     </div>
   );
 }
