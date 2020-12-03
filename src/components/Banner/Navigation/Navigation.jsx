@@ -54,7 +54,7 @@ export const Navigation = () =>{
         },
         {
             title: 'Корзина',
-            to: '/basket'
+            to: '/korzina'
         },
         authLink
 

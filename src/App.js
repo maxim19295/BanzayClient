@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Banner } from "./components/Banner/Banner";
 import { Body } from "./components/Body/Body";
 import { Footer } from "./components/Footer/Footer";
@@ -10,7 +10,10 @@ function App() {
     <div className="app">
       <Header/>
       <Banner/>
-      <Body/>
+      <Switch>
+        <Route path='/:name' children={<Body/>}/>
+        <Route path='/' children={<Body/>}/>
+      </Switch>
       <Footer/>
     </div>
     </BrowserRouter>
