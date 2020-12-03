@@ -1,0 +1,22 @@
+#about{
+    font-style: italic;
+    font-weight: bold;
+}
+#about p{
+    color: red;
+    font-size: 20px;
+}
+#about ol{
+    list-style: none;
+    counter-reset: item;
+}
+#about ul{
+    list-style: disc;
+    margin: 20px 0px;
+    line-height: 30px;
+}
+#about ol>li:before{
+    color: red;
+    content: counter(item) ') ';
+    counter-increment: item;
+}
