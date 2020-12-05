@@ -72,7 +72,7 @@ export const Body = () =>{
     }
     else {
         return <div>
-            {name}
+            <Main/>
         </div>
     }
 }

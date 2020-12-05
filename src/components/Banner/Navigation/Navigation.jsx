@@ -45,7 +45,7 @@ export const Navigation = () =>{
             to: '/onas'
         },
         {
-            title: 'Доставка',
+            title: 'Доставка и оплата',
             to: '/dostavka'
         },
         {
