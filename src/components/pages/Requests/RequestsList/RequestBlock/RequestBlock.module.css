@@ -1,0 +1,9 @@
+.requestBlock{
+    display: flex;
+    flex-direction: column;
+}
+.commentBlock{
+    font-size: 0.7em;
+    align-self: flex-end;
+    width: 95%;
+}

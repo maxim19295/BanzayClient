@@ -1,0 +1,31 @@
+.request{
+    display: flex;
+}
+.ava>img{
+    margin-right: 15px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 2px 2px 3px black;
+    overflow: hidden;
+}
+.textPanel{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.infoPanel{
+    display: flex;
+    justify-content: space-between;
+}
+.infoPanel>div:first-child{
+    display: flex;
+}
+.timeRequest{
+    font-style: italic;
+    font-size: 0.9em;
+    color: gray;
+}
+.infoPanel>div:last-child{
+    font-style: italic;
+    color: gray;
+}

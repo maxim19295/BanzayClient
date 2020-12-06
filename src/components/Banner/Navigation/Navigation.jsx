@@ -62,9 +62,9 @@ export const Navigation = () =>{
     return <div id={n.navigation}>
         {menu.map((el,index)=>{
             const to = typeof el.to === 'string' ? el.to : '#';
-        const submenu = typeof el.to !== 'string' ? <div id={n.submenu}>{
+        const submenu = typeof el.to !== 'string' ? <div key={index} id={n.submenu}>{
             el.to.map((el,index)=>{
-                return <div><NavLink to={el.to}>{el.title}</NavLink></div>
+                return <div key={index}><NavLink to={el.to}>{el.title}</NavLink></div>
                 })
             }</div> : null;
             return <div key={index}><NavLink to={to}>{el.title}</NavLink>

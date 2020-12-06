@@ -1,0 +1,47 @@
+.formNewRequest{
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    align-items: center;
+}
+.formNewRequest>div{
+    width: 100%;
+}
+.formNewRequest p.header{
+    font-size: 1.5em;
+    color: orange;
+    align-self: flex-start;
+}
+.formNewRequest p{
+    margin: 10px;
+    align-self: flex-start;
+}
+.formNewRequest textarea{
+    width: 100%;
+    height: 100px;
+    resize: none;
+}
+.formNewRequest button{
+    background-color: black;
+    width: 100%;
+    color: white;
+    border: 0px;
+    text-transform: uppercase;
+    padding: 5px;
+    margin: 5px 0px;
+}
+.signatureNewRequest{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.signatureNewRequest>div{
+    flex-grow: 1;
+}
+.signatureNewRequest>div:first-child{
+    padding-right: 50px;
+}
+.signatureNewRequest>div>input{
+    width: 100%;
+}
