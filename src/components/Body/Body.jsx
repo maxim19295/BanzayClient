@@ -7,6 +7,7 @@ import { Basket } from '../pages/Basket/Basket';
 import {Menu} from '../pages/Menu/Menu';
 import b from './Body.module.css';
 import '../../App.css'
+import { Sign } from "../pages/Sign/Sign";
 export const Body = () =>{
     const menuArray = [
         {
@@ -66,6 +67,10 @@ export const Body = () =>{
             render={()=><>
             <div id={b.bodyHeader}><div className='content'>корзина</div></div>
             <Basket/>
+            </>}/>
+            <Route path='/sign' render={()=><>
+            <div id={b.bodyHeader}><div className='content'>войти/зарегистрироваться</div></div>
+            <Sign/>
             </>}/>
         </Switch>
     </div>}
