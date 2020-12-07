@@ -1,0 +1,15 @@
+.in ,.out{
+    color: red;
+}
+.in{
+    display: none;
+}
+.out{
+    display: block;
+}
+.delIcon:hover .in{
+    display: block;
+}
+.delIcon:hover .out{
+    display: none;
+}

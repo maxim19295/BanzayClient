@@ -1,3 +1,6 @@
+import { BasketTable } from './BasketTable/BasketTable';
 export const Basket = () =>{
-    return <div>Basket</div>
+    return <div className='content'>
+        <BasketTable/>
+    </div>
 }

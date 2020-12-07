@@ -1,0 +1,32 @@
+.basketTable{
+    width: 80%;
+    margin: 0px auto;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    border: 3px solid black;
+}
+.basketTable th:nth-child(1){
+    width: 5%;
+}
+.basketTable th:nth-child(2){
+    width: 20%;
+}
+.basketTable th:nth-child(3){
+    width: 25%;
+}
+.basketTable th:nth-child(4){
+    width: 15%;
+}
+.basketTable th:nth-child(5){
+    width: 15%;
+}
+.basketTable th:nth-child(6){
+    width: 20%;
+}
+.basketTable td{
+    border: 1px solid gray;
+    text-align: center;
+}
+.basketTable th{
+    border: 1px solid gray;
+}
