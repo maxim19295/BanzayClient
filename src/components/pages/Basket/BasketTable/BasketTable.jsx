@@ -49,7 +49,7 @@ export const BasketTable = () =>{
         {tableBody}
     <tr>
         <td colSpan={6}>
-            <div style={{display: 'flex', flexDirection: 'flex-reverse'}}>
+            <div style={{display: 'flex', flexDirection: 'row-reverse'}}>
                 <div style={{padding: '5px 15px'}}>
                     Всего: <b>{total} грн</b>
                 </div>
