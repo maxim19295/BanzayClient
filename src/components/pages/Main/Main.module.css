@@ -1,0 +1,63 @@
+.tovary{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.tovary>div{
+    width: 30%;
+}
+.tovary>div>img{
+    width: 100%;
+}
+.tovary>div>p{
+    text-align: center;
+    color: red;
+}
+.requestsBlock{
+    background-attachment: fixed;
+    background-image: url(./../../../assets/request_back.png);
+    height: max-content;
+    padding: 20px 0px;
+}
+.requestsBlock>p{
+    text-align: center;
+    color: white;
+    font-size: 1.4em;
+}
+.requestsBlock>div{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0px;
+}
+.requestsBlock>div>div{
+    width: 30%;
+    color: white;
+    font-size: 1.2em;
+}
+.postBlock{
+    display: flex;
+    flex-direction: column;
+}
+.postBlock>div:first-child{
+    background-color: red;
+    padding: 30px;
+    text-align: center;
+    color: white;
+    font-size: 1.7em;
+}
+.postBlock>div:last-child{
+    display: flex;
+    justify-content: center;
+}
+.postBlock>div>div{
+    margin: 0px 10px;
+}
+.postBlock>div .header{
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 0px;
+}
+.postBlock>div .date{
+    font-size: 0.7em;
+    font-style: italic;
+}

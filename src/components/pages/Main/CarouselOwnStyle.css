@@ -1,0 +1,51 @@
+.owl-carousel{
+    position: relative;
+}
+.owl-nav{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    position: absolute;
+    top: 30%;
+}
+.owl-carousel>.owl-nav>button.owl-prev{
+    padding: 0px 10px !important;
+    background-color: red!important;
+    color: white!important;
+}
+.owl-carousel>.owl-nav>button.owl-next{
+    padding: 0px 10px !important;
+    background-color: red!important;
+    color: white!important;
+}
+.item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.item>div{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+.item>div:first-child{
+    margin-bottom: 30px;
+}
+.item>div>div:nth-child(2){
+    font-weight: bold;
+}
+.item button{
+border: 0px;
+padding: 5px 20px;
+background-color: orange;
+color: white;
+text-transform: uppercase;
+}
+.sliderHeader{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 2px solid rgb(179, 179, 179);
+}
