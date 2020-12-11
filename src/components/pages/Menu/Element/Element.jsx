@@ -4,7 +4,7 @@ export const Element = ({img, title, price}) =>{
                     <div className={e.subBlockOne}>
                     <div><img src={img} alt='example'/></div>
                     <div>{title}</div>
-                    <div className={e.price}>{price}</div>
+                    <div className={e.price}>{price} грн</div>
                     </div>
                     <div><button className={e.basketButton}>в корзину</button></div>
                 </div>

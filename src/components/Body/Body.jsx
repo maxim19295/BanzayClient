@@ -4,40 +4,17 @@ import { Main } from "../pages/Main/Main";
 import {DeliveryInfo} from '../pages/DeliveryInfo/DeliveryInfo';
 import {Requests} from '../pages/Requests/Requests';
 import { Basket } from '../pages/Basket/Basket';
-import {Menu} from '../pages/Menu/Menu';
+import Menu from '../pages/Menu/Menu';
 import b from './Body.module.css';
 import '../../App.css'
 import { Sign } from "../pages/Sign/Sign";
-export const Body = () =>{
-    const menuArray = [
-        {
-            to: 'sushi',
-            title: 'Суши'
-        },
-        {
-            to: 'maki',
-            title: 'Маки Роллы'
-        },
-        {
-            to: 'rolly',
-            title: 'Роллы'
-        },
-        {
-            to: 'sety',
-            title: 'Сеты'
-        },
-        {
-            to: 'salaty',
-            title: 'Салаты'
-        },
-        {
-            to: 'napitki',
-            title: 'Напитки'
-        }
-    ];
+import {connect} from 'react-redux';
+import { getMenuAC } from "../../redux/menuReducer";
+const Body = ({menuList,getMenu}) =>{
     const {name} = useParams();
+    if(menuList){
     if(name){
-        const el = menuArray.find(el=>{return el.to===name});
+        const el = menuList.find(el=>{return el.to===name});
         if(el){return <div>
             <div id={b.bodyHeader}><div className='content'>{el.title}</div></div>
             <Menu el={el}/>
@@ -79,5 +56,16 @@ export const Body = () =>{
         return <div>
             <Main/>
         </div>
+    }}
+    else{
+        getMenu();
+        return null;
     }
 }
+let mapStateToProps = (state) =>({
+    ...state.menu
+});
+let mapDispatchToProps = (dispatch) =>({
+    getMenu: ()=>dispatch(getMenuAC())
+})
+export default connect(mapStateToProps,mapDispatchToProps)(Body);

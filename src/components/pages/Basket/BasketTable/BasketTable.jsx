@@ -4,21 +4,15 @@ import {PriceCell} from './PriceCell/PriceCell';
 import {QuantityCell} from './QuantityCell/QuantityCell';
 import {TitleCell} from './TitleCell/TitleCell';
 import {TotalCell} from './TotalCell/TotalCell';
+import {connect} from 'react-redux';
 import b from './BasketTable.module.css';
-export const BasketTable = () =>{
-    const basket = [{
-        id: 1, 
-        title: 'Roll s ugrem',
-        price: 666,
-        quantity: 1
-    },
-    {
-        id: 3, 
-        title: 'Roll s lososem',
-        price: 248,
-        quantity: 4
-    }
-];
+import { getBasketAC } from '../../../../redux/basketReducer';
+import { useEffect } from 'react';
+const BasketTable = ({basket,getBasket}) =>{
+    useEffect(()=>{
+        getBasket();
+    })
+    if(basket){
     let total = 0;
     for(let i =0; i<basket.length;i++){
         total+=basket[i].quantity*basket[i].price;
@@ -63,3 +57,14 @@ export const BasketTable = () =>{
     <tfoot></tfoot>
 </table>
 }
+else{
+    return null;
+}
+}
+let mapStateToProps = (state) =>({
+    ...state.basket
+});
+let mapDispatchToProps = (dispatch) =>({
+    getBasket: ()=>{dispatch(getBasketAC())}
+})
+export default connect(mapStateToProps,mapDispatchToProps)(BasketTable);

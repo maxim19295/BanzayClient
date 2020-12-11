@@ -1,5 +1,5 @@
 import { NewRequestForm } from './NewRequestForm/NewRequestForm';
-import { RequestsList } from './RequestsList/RequestList';
+import RequestsList from './RequestsList/RequestList';
 export const Requests = () =>{
     return <div className='content'>
         <p>

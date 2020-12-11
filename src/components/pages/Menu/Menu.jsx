@@ -1,39 +1,28 @@
 import example from '../../../72.jpg';
 import { Element } from './Element/Element';
 import m from './Menu.module.css';
-export const Menu = ({el}) =>{
-return <div>
-    <div className='content'>
-            <p>Суши – одно из самых популярных блюд в мире, которое одинаково любят в Европе и Азии. Они сочетают в себе потрясающий вкус и пользу, экзотику Востока и питательные ингредиенты, необходимые каждому. Более 10 веков суши являются традиционной едой в Китае и Японии, а в последние десятилетия они получили распространение по всему миру.</p>
-            <div className={m.menuBlock}>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
-            <Element img={example} title='Сет "Маки"' price='275 грн'/>
+import {connect} from 'react-redux';
+import { getGoodsAC } from '../../../redux/goodsReducer';
+import { useEffect } from 'react';
+const Menu = ({goodList, el,getGoods}) =>{
+    useEffect(()=>{getGoods(el.id)},[el.id]);
+    if(goodList){const Elements = goodList.map(el=><Element img={example} key={el.id} title={el.title} price={el.price}/>);
+    return <div>
+        <div className='content'>
+                <p>{el.about}</p>
+                <div className={m.menuBlock}>
+                {Elements}
+                </div>
             </div>
-        </div>
-</div>
+    </div>}
+    else{
+        return null;
+    }
 }
+let mapStateToProps = (state) =>({
+     ...state.goods
+});
+let mapDispatchToProps = (dispatch) =>({
+    getGoods: (id)=>dispatch(getGoodsAC(id))
+})
+export default connect(mapStateToProps,mapDispatchToProps)(Menu);
