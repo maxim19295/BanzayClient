@@ -12,7 +12,9 @@ export const Navigation = () =>{
         },
         {
             title: 'Меню',
-            to: [
+            to: {
+                to: '/menu',
+                submenu: [
                 {
                     title: 'Суши',
                     to: '/sushi'
@@ -27,18 +29,18 @@ export const Navigation = () =>{
                 },
                 {
                     title: 'Сеты',
-                    to: 'sety'
+                    to: '/sety'
                 },
                 {
                     title: 'Салаты',
-                    to: 'salaty'
+                    to: '/salaty'
                 },
                 {
                     title: 'Напитки',
-                    to: 'napitki'
+                    to: '/napitki'
                 }
 
-        ]
+        ]}
         },
         {
             title: 'О нас',
@@ -63,8 +65,8 @@ export const Navigation = () =>{
         {menu.map((el,index)=>{
             const to = typeof el.to === 'string' ? el.to : '#';
         const submenu = typeof el.to !== 'string' ? <div key={index} id={n.submenu}>{
-            el.to.map((el,index)=>{
-                return <div key={index}><NavLink to={el.to}>{el.title}</NavLink></div>
+            el.to.submenu.map((subel,index)=>{
+                return <div key={index}><NavLink to={`${el.to.to}${subel.to}`}>{subel.title}</NavLink></div>
                 })
             }</div> : null;
             return <div key={index}><NavLink to={to}>{el.title}</NavLink>

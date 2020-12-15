@@ -10,16 +10,11 @@ import '../../App.css'
 import { Sign } from "../pages/Sign/Sign";
 import {connect} from 'react-redux';
 import { getMenuAC } from "../../redux/menuReducer";
-const Body = ({menuList,getMenu}) =>{
+import { GoodPage } from "../pages/GoodPage/GoodPаge";
+export const Body = () =>{
     const {name} = useParams();
-    if(menuList){
     if(name){
-        const el = menuList.find(el=>{return el.to===name});
-        if(el){return <div>
-            <div id={b.bodyHeader}><div className='content'>{el.title}</div></div>
-            <Menu el={el}/>
-    </div>}
-    else {return <div>
+        return <div>
         <Switch>
             <Route path='/glavnaya' 
             render={()=><>
@@ -51,21 +46,9 @@ const Body = ({menuList,getMenu}) =>{
             </>}/>
         </Switch>
     </div>}
-    }
     else {
         return <div>
             <Main/>
         </div>
-    }}
-    else{
-        getMenu();
-        return null;
     }
 }
-let mapStateToProps = (state) =>({
-    ...state.menu
-});
-let mapDispatchToProps = (dispatch) =>({
-    getMenu: ()=>dispatch(getMenuAC())
-})
-export default connect(mapStateToProps,mapDispatchToProps)(Body);

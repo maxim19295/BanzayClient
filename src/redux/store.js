@@ -15,3 +15,4 @@ const reducers = combineReducers({
     sliders: sliderReducer
 })
 export const store = createStore(reducers);
+window.state=store;

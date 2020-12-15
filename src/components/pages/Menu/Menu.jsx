@@ -1,28 +1,34 @@
-import example from '../../../72.jpg';
+
 import { Element } from './Element/Element';
 import m from './Menu.module.css';
+import b from '../../Body/Body.module.css';
 import {connect} from 'react-redux';
 import { getGoodsAC } from '../../../redux/goodsReducer';
 import { useEffect } from 'react';
-const Menu = ({goodList, el,getGoods}) =>{
-    useEffect(()=>{getGoods(el.id)},[el.id]);
-    if(goodList){const Elements = goodList.map(el=><Element img={example} key={el.id} title={el.title} price={el.price}/>);
-    return <div>
-        <div className='content'>
-                <p>{el.about}</p>
-                <div className={m.menuBlock}>
-                {Elements}
-                </div>
-            </div>
+import { Redirect, useParams } from 'react-router-dom';
+import GoodList from './GoodList/GoodList';
+import { getMenuAC } from '../../../redux/menuReducer';
+const Menu = ({menuList,getMenu}) =>{
+    const {name} = useParams();
+    useEffect(()=>{getMenu()},[]);
+    if(menuList){
+    const matchEl = menuList.find(el=>el.to===name);
+    if(matchEl){
+        return <div>
+        <div id={b.bodyHeader}><div className='content'>{matchEl.title}</div></div>
+        <GoodList menu={matchEl}/>
     </div>}
+    else{
+        return <Redirect path='/'/>
+    }}
     else{
         return null;
     }
 }
 let mapStateToProps = (state) =>({
-     ...state.goods
+    ...state.menu
 });
 let mapDispatchToProps = (dispatch) =>({
-    getGoods: (id)=>dispatch(getGoodsAC(id))
+    getMenu: ()=>dispatch(getMenuAC())
 })
 export default connect(mapStateToProps,mapDispatchToProps)(Menu);

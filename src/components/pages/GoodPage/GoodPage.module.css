@@ -1,0 +1,51 @@
+.goodContainer{
+    display: flex;
+    flex-direction: column;
+}
+.goodContainer>div:first-child{
+    display: flex;
+}
+.goodContainer>div>div:first-child{
+    flex-grow: 2;
+} /*img*/
+.goodContainer>div>div:last-child{
+    flex-grow: 5;
+}/*text*/
+.goodContainer>div>div img{
+    width: 100%;
+}
+.goodContainer>div>div:last-child>div{
+    padding: 5px 0px;
+}
+.goodContainer>div>div:last-child>div.price{
+    color: green;
+    font-weight: bold;
+}
+.editPlace{
+    width: 32px;
+    height:32px;
+    border: none;
+}
+input.editPlace{
+    text-align: center;
+}
+.aboutContainer>div{
+    border: 1px solid black;
+    padding: 10px 15px;
+}
+.aboutContainer>div:first-child{
+    width: max-content;
+    border-bottom-color: white;
+    font-weight: bold;
+}
+.basketButton{
+    padding: 5px 10px;
+    background-color: orange;
+    margin-left: 10px;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+}
+.category{
+    color:red;
+}
