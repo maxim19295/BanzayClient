@@ -2,10 +2,10 @@ import { basketReducer } from "./basketReducer";
 import { menuReducer } from "./menuReducer";
 import { requestReducer } from "./requestsReducer";
 import { sliderReducer } from "./sliderReducer";
-const { combineReducers, createStore } = require("redux");
+import thunk from 'redux-thunk';
+const { combineReducers, createStore, applyMiddleware } = require("redux");
 const { goodsReducer } = require("./goodsReducer");
 const { postsReducer } = require("./postsReducer");
-
 const reducers = combineReducers({
     goods: goodsReducer,
     posts: postsReducer,
@@ -14,5 +14,5 @@ const reducers = combineReducers({
     menu: menuReducer,
     sliders: sliderReducer
 })
-export const store = createStore(reducers);
+export const store = createStore(reducers,applyMiddleware(thunk));
 window.state=store;

@@ -2,7 +2,7 @@ import b from '../../Body/Body.module.css';
 import g from './GoodPage.module.css';
 import example from '../../../72.jpg';
 import { getMenuAC } from '../../../redux/menuReducer';
-import { getGoodsAC } from '../../../redux/goodsReducer';
+import { getGoods } from '../../../redux/goodsReducer';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
@@ -12,21 +12,22 @@ import {AdditionalBlock} from './AdditionalBlock/AdditionalBlock';
 const GoodPage = ({goodList,menuList,getMenu,getGoods}) =>{
     const {name,good_name} = useParams();
     useEffect(()=>{
+        debugger;
         getMenu();
         if(menuList){
             const el = menuList.find(el=>el.to===name);
-            if(el){
-                getGoods(el.id);
+            if(el && !goodList){
+                getGoods();
             }
         }
     },[menuList,goodList]);
     if(menuList && goodList){
-        const selectedGood = goodList.find(el=>el.id===parseInt(good_name));
+        const selectedGood = goodList.find(el=>el.number===parseInt(good_name));
         if(selectedGood){
         return <div>
         <div id={b.bodyHeader}>
             <div className='content'>
-                {selectedGood.title}
+                {selectedGood.nazvanie}
             </div>
         </div>
         <div className='content'>
@@ -34,9 +35,9 @@ const GoodPage = ({goodList,menuList,getMenu,getGoods}) =>{
             <div>
                 <div><img src={example} alt='d'/></div>
                 <div>
-                    <div>{selectedGood.title}</div>
+                    <div>{selectedGood.nazvanie}</div>
                     <div className={g.price}>{selectedGood.price} грн.</div>
-                    <div>{selectedGood.weight} {selectedGood.assortCode===6 ? 'л.' : 'кг'}</div>
+                    <div>{selectedGood.weight} {selectedGood.kod===6 ? 'л.' : 'кг'}</div>
                     <div>{selectedGood.sostav}</div>
                     <div className={g.basketPanel}>
                         <button className={g.editPlace}>
@@ -57,11 +58,11 @@ const GoodPage = ({goodList,menuList,getMenu,getGoods}) =>{
             </div>
             <div className={g.aboutContainer}>
                 <div>Описание</div>
-                <div>Этот ролл с нежной начинкой из японского омлета и сливочного сыра, покрытый вкуснейшим угрем, сделает Ваш романтический вечер незабываемым! заказать в Харькове роллы и сеты ресторан Банзай.</div></div>
+                <div>{selectedGood.about}</div></div>
                 <div><FontAwesomeIcon icon={faEye}/>Товар был просмотрен 5 раз</div>
         </div>
-        <AdditionalBlock id={selectedGood.id} name_menu = {name} title='Возможно вас также заинтересует...' task='another' assortCode={selectedGood.assortCode} goodList={goodList}/>
-        <AdditionalBlock id={selectedGood.id} name_menu = {name} title='Похожие товары' task='same' assortCode={selectedGood.assortCode} goodList={goodList}/>
+        <AdditionalBlock id={selectedGood.number} name_menu = {name} title='Возможно вас также заинтересует...' task='another' assortCode={selectedGood.kod} goodList={goodList}/>
+        <AdditionalBlock id={selectedGood.number} name_menu = {name} title='Похожие товары' task='same' assortCode={selectedGood.kod} goodList={goodList}/>
         </div>
         
     </div>
@@ -77,6 +78,6 @@ const mapStateToProps = (state) =>({
 });
 const mapDispatchToProps = (dispatch) =>({
     getMenu: ()=>dispatch(getMenuAC()),
-    getGoods: ()=>dispatch(getGoodsAC())
+    getGoods: ()=>dispatch(getGoods())
 });
 export default connect(mapStateToProps,mapDispatchToProps)(GoodPage);

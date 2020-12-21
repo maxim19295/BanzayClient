@@ -1,9 +1,10 @@
-const GET_REQUESTS_FOR_ALL = 'GET_REQUESTS_FOR_ALL';
-const GET_REQUESTS_FOR_ADMIN = 'GET_REQUESTS_FOR_ADMIN';
+import * as axios from 'axios';
+const GET_REQUESTS = 'GET_REQUESTS';
+const GET_COMMENTS = 'GET_COMMENTS';
 const initState = {
     requestList: null
 }
-const requestList = [
+const rquestList = [
     {
         id: 1,
         autor: 'Max',
@@ -35,10 +36,29 @@ const requestList = [
 ];
 export const requestReducer = (state=initState, action) =>{
     switch(action.type){
-        case GET_REQUESTS_FOR_ALL: return {...state, requestList: action.requestList.filter(el=>el.private===false)}
-        case GET_REQUESTS_FOR_ADMIN: return {...state, requestList: action.requestList.filter(el=>el.private===true)}
+        case GET_REQUESTS: return {...state, requestList: action.requestList}
+        case GET_COMMENTS: return {...state, requestList: state.requestList.map(el=>{
+            if(el.n_request===action.number){
+                return {...el, comments: [...action.commentsList]}
+            }
+            else return el;
+        })}
         default: return state;
     } 
 };
-export const getRequestsForAllAC = () => ({type: GET_REQUESTS_FOR_ALL, requestList});
-export const getRequestsForAdminAC = () => ({type: GET_REQUESTS_FOR_ADMIN, requestList});
+const getRequestsAC = (requestList) => ({type: GET_REQUESTS, requestList});
+export const getRequestsForAll = () => (dispatch) =>{
+    axios.get('http://localhost:8080/requests').then((result)=>{
+        dispatch(getRequestsAC(result.data));
+    })
+}
+const getCommentsAC = (number,commentsList) =>({type: GET_COMMENTS, number, commentsList});
+export const getRequestsForAdmin = () => (dispatch) =>{
+    axios.get('http://localhost:8080/request_for_admin').then((result)=>{
+        dispatch(getRequestsAC(result.data));
+    })
+}
+export const getComments = (requestNumber) =>{
+    return (dispatch) =>{
+    axios.get(`http://localhost:8080/comments?requestNumber=${requestNumber}`).then((result)=>dispatch(getCommentsAC(requestNumber,result.data)));
+}}

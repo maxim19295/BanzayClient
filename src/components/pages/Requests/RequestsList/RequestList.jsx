@@ -1,10 +1,14 @@
 import { RequestBlock } from "./RequestBlock/RequestBlock"
 import {connect} from 'react-redux';
-import { getRequestsForAllAC } from "../../../../redux/requestsReducer";
+import { getComments, getRequestsForAll } from "../../../../redux/requestsReducer";
 import { useEffect } from "react";
-const RequestsList = ({requestList,getRequestsForAll}) =>{
+const RequestsList = ({requestList,getRequestsForAll,getComments}) =>{
+    const getCommentsHandler = (number) =>{
+        getComments(number);
+    }
     useEffect(()=>{getRequestsForAll()},[]);
-    if(requestList){const Requests = requestList.map(el=><RequestBlock request={el}/>)
+    if(requestList){
+        const Requests = requestList.map(el=><RequestBlock getCommentsHandler = {getCommentsHandler} request={el}/>)
     return <div>
         {Requests}
     </div>}
@@ -16,6 +20,7 @@ const mapStateToProps = (state) =>({
     ...state.requests
 });
 const mapDispatchToProps = (dispatch) =>({
-    getRequestsForAll: ()=>{dispatch(getRequestsForAllAC())}
+    getRequestsForAll: ()=>{dispatch(getRequestsForAll())},
+    getComments: (number)=>{dispatch(getComments(number));}
 })
 export default connect(mapStateToProps,mapDispatchToProps)(RequestsList);

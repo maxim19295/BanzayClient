@@ -1,8 +1,9 @@
+import * as axios from 'axios';
 const GET_GOODS = 'GET_GOODS';
 const initState = {
     goodList: null
 }
-const goodList = [{
+const godList = [{
     id: 1,
     title: 'Roll s ugrem',
     price: 666,
@@ -280,8 +281,12 @@ const goodList = [{
 ];
 export const goodsReducer = (state=initState, action)=>{
     switch(action.type){
-        case GET_GOODS: return {...state, goodList}
+        case GET_GOODS: return {...state, goodList: action.goodList}
         default: return state;
     }
 };
-export const getGoodsAC = () =>({type: GET_GOODS, goodList});
+const getGoodsAC = (goodList) =>({type: GET_GOODS, goodList});
+export const getGoods = () => (dispatch) =>{
+    console.log('dd');
+    axios.get('http://localhost:8080/tovary').then((result)=>dispatch(getGoodsAC(result.data)));
+}
