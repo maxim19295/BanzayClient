@@ -1,9 +1,5 @@
-
-import { Element } from './Element/Element';
-import m from './Menu.module.css';
 import b from '../../Body/Body.module.css';
 import {connect} from 'react-redux';
-import { getGoodsAC } from '../../../redux/goodsReducer';
 import { useEffect } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import GoodList from './GoodList/GoodList';

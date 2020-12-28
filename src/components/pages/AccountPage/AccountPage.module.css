@@ -1,0 +1,6 @@
+.accountPage{
+    display: flex;
+}
+.accountPage>div{
+    width: 40%;
+}

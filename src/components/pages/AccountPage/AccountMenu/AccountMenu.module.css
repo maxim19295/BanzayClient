@@ -1,0 +1,13 @@
+#accountMenuList{
+    display: flex;
+    flex-direction: column;
+}
+#accountMenuList > div{
+    padding: 5px;
+    color: red;
+    font-weight: bold;
+}
+#accountMenuList > div:hover{
+    background-color: red;
+    color: white;
+}

@@ -8,7 +8,7 @@ const RequestsList = ({requestList,getRequestsForAll,getComments}) =>{
     }
     useEffect(()=>{getRequestsForAll()},[]);
     if(requestList){
-        const Requests = requestList.map(el=><RequestBlock getCommentsHandler = {getCommentsHandler} request={el}/>)
+        const Requests = requestList.map((el,index)=><RequestBlock key={index} getCommentsHandler = {getCommentsHandler} request={el}/>)
     return <div>
         {Requests}
     </div>}

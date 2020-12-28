@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import n from './Navigation.module.css';
-export const Navigation = () =>{
+export const Navigation = (props) =>{
     const authLink = {
-        title: 'Войти',
-        to: '/sign'
+        title: props.isAuth===true ? props.credentials.username :'Войти',
+        to: props.isAuth===true ? '/account' : '/sign'
     }
     const menu = [
         {

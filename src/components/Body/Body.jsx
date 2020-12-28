@@ -1,17 +1,14 @@
-import { Route, Switch, useParams } from "react-router-dom"
+import { Redirect, Route, Switch, useParams } from "react-router-dom"
 import { About } from "../pages/About/About";
 import { Main } from "../pages/Main/Main";
 import {DeliveryInfo} from '../pages/DeliveryInfo/DeliveryInfo';
 import {Requests} from '../pages/Requests/Requests';
 import { Basket } from '../pages/Basket/Basket';
-import Menu from '../pages/Menu/Menu';
 import b from './Body.module.css';
 import '../../App.css'
 import { Sign } from "../pages/Sign/Sign";
-import {connect} from 'react-redux';
-import { getMenuAC } from "../../redux/menuReducer";
-import { GoodPage } from "../pages/GoodPage/GoodPаge";
-export const Body = () =>{
+import { AccountPage } from "../pages/AccountPage/AccountPage";
+export const Body = ({auth}) =>{
     const {name} = useParams();
     if(name){
         return <div>
@@ -40,10 +37,14 @@ export const Body = () =>{
             <div id={b.bodyHeader}><div className='content'>корзина</div></div>
             <Basket/>
             </>}/>
-            <Route path='/sign' render={()=><>
+            {<Route path='/sign' render={()=>{
+            if(auth.isAuth!==true)
+            {return <>
             <div id={b.bodyHeader}><div className='content'>войти/зарегистрироваться</div></div>
             <Sign/>
-            </>}/>
+            </>}
+            else {return <Redirect to = '/account'/>}
+        }}/>}
         </Switch>
     </div>}
     else {

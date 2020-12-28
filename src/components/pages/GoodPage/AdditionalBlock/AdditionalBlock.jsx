@@ -1,8 +1,6 @@
-import e from '../../../pages/Menu/Element/Element.module.css';
 import g from '../../Menu/GoodList/GoodList.module.css';
 import img from '../../../../72.jpg';
 import {Element} from '../../../pages/Menu/Element/Element';
-import { getGoodsAC } from '../../../../redux/goodsReducer';
 import { NavLink } from 'react-router-dom';
 const getNumbers = (task,assortCode,id,goodList) =>{
     let arr4Numbers = [];
@@ -15,14 +13,12 @@ const getNumbers = (task,assortCode,id,goodList) =>{
                 for(let i=0;i<4;i++){
                     do{
                         assort = Math.floor(Math.random()*6+1);
-                        console.log('rr');
                     }
                     while(!!arr4Numbers.find(el=>(el.kod===assort)) || assort===assortCode);
                     let elem;
                     do
                     {
                         elem=Math.floor(Math.random()*arrAllNumbers.filter(el=>el.kod===assort).length+1);
-                        console.log('RR');
                     }
                     while(!!arr4Numbers.find(el=>el===arrAllNumbers.filter(el=>el.kod===assort)[elem-1]));
                     arr4Numbers[i]=arrAllNumbers.filter(el=>el.kod===assort)[elem-1];
@@ -49,7 +45,6 @@ const getNumbers = (task,assortCode,id,goodList) =>{
 }
 export const AdditionalBlock = ({name_menu,id,title,task,assortCode,goodList}) =>{
     const goods = getNumbers(task,assortCode,id,goodList);
-    console.log(goods);
     if(goods.length!==0){
         const goodsElems = goods.map((el,index)=><NavLink to={`/menu/${name_menu}/${el.number}`}><Element img={img} key={index} title={el.nazvanie} price={el.price}/></NavLink>);
         return <div>

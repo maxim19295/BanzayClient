@@ -24,6 +24,7 @@ const GoodPage = ({goodList,menuList,getMenu,getGoods}) =>{
     if(menuList && goodList){
         const selectedGood = goodList.find(el=>el.number===parseInt(good_name));
         if(selectedGood){
+            console.log(selectedGood.img)
         return <div>
         <div id={b.bodyHeader}>
             <div className='content'>
@@ -33,7 +34,7 @@ const GoodPage = ({goodList,menuList,getMenu,getGoods}) =>{
         <div className='content'>
         <div className={g.goodContainer}>
             <div>
-                <div><img src={example} alt='d'/></div>
+                <div><img src={selectedGood.img} alt='d'/></div>
                 <div>
                     <div>{selectedGood.nazvanie}</div>
                     <div className={g.price}>{selectedGood.price} грн.</div>

@@ -7,7 +7,7 @@ import sety from '../../../assets/tovary/sety.png';
 import salaty from '../../../assets/tovary/salaty.png';
 import napitki from '../../../assets/tovary/napitki.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faCalendarAlt, faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
+import {faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 import PostsBlock from './PostsBlock/PostsBlock';
 import SlidersBlock from './SlidersBlock/SlidersBlock';
 export const Main = () =>{

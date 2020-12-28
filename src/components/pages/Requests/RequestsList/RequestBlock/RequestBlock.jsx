@@ -15,7 +15,7 @@ export const RequestBlock = ({request,getCommentsHandler}) =>{
     return <div className={r.requestBlock}>
         <Request autor={request.autor} date={request.str_time} text={request.content}/>
         <button onClick={handleClick}>{show ? 'Скрыть' : 'Показать'} комментарии</button>
-        { (request.comments && show) && request.comments.map(el=><div className={r.commentBlock}>
+        { (request.comments && show) && request.comments.map((el,index)=><div key={index} className={r.commentBlock}>
             <Request autor={el.autor} date={el.str_time} text={el.content}/>
         </div>)}
     </div>

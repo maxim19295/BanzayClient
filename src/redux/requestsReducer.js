@@ -48,17 +48,17 @@ export const requestReducer = (state=initState, action) =>{
 };
 const getRequestsAC = (requestList) => ({type: GET_REQUESTS, requestList});
 export const getRequestsForAll = () => (dispatch) =>{
-    axios.get('http://localhost:8080/requests').then((result)=>{
+    axios.get('/requests').then((result)=>{
         dispatch(getRequestsAC(result.data));
     })
 }
 const getCommentsAC = (number,commentsList) =>({type: GET_COMMENTS, number, commentsList});
 export const getRequestsForAdmin = () => (dispatch) =>{
-    axios.get('http://localhost:8080/request_for_admin').then((result)=>{
+    axios.get('/request_for_admin').then((result)=>{
         dispatch(getRequestsAC(result.data));
     })
 }
 export const getComments = (requestNumber) =>{
     return (dispatch) =>{
-    axios.get(`http://localhost:8080/comments?requestNumber=${requestNumber}`).then((result)=>dispatch(getCommentsAC(requestNumber,result.data)));
+    axios.get(`/comments/${requestNumber}`).then((result)=>dispatch(getCommentsAC(requestNumber,result.data)));
 }}

@@ -287,6 +287,13 @@ export const goodsReducer = (state=initState, action)=>{
 };
 const getGoodsAC = (goodList) =>({type: GET_GOODS, goodList});
 export const getGoods = () => (dispatch) =>{
-    console.log('dd');
-    axios.get('http://localhost:8080/tovary').then((result)=>dispatch(getGoodsAC(result.data)));
+    axios.get('/tovary').then((result)=>dispatch(getGoodsAC(result.data)));
+    //axios.post('/api/login',{email: 'maxim19995@gmail.com', password: 'najdirabotudebil'},{headers: {'Content-Type': 'application/json'}})
+    /* все ок axios.post('/api/register', {phone: '+380954517921', name: 'maxiksx',email: 'maxim19995@gmail.com', password: 'najdirabotudebil'}, {headers: {'Content-Type': 'application/json'}})*/
+    //не передаются хидеры (пидоры) axios.get('/api/me',{},{headers: {'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heGltMTk5NUBnbWFpbC5jb20iLCJpYXQiOjE2MDg5ODU3NTQsImV4cCI6MTYwODk4OTM1NH0.UTMTFkxroCjbBMD4sx7viY6d2sAtB807EUnaBU3mRME', 'Content-Type': 'application/json'}})
+    //все ок axios.get('/api/items')
+    //все ок axios.get('/api/items/2')
+    //все ок axios.put('/api/items/1',{title: 'Notebook'},{headers: {'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heGltMTk5OTVAZ21haWwuY29tIiwiaWF0IjoxNjA4OTkzMDkzLCJleHAiOjE2MDg5OTY2OTN9.9UZ12WRyhDsySax2Q0hpYHjYqDe5MSRS9wnM50E3WPw'}});
+    //все ок, только хидеры axios.delete('/api/items/2',{},{headers: {'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heGltMTk5OTVAZ21haWwuY29tIiwiaWF0IjoxNjA4OTkzMDkzLCJleHAiOjE2MDg5OTY2OTN9.9UZ12WRyhDsySax2Q0hpYHjYqDe5MSRS9wnM50E3WPw'}})
+    //все ок axios.post('/api/items',{title: 'TV center', price: 14999},{headers: {'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heGltMTk5OTVAZ21haWwuY29tIiwiaWF0IjoxNjA4OTk5MTE2LCJleHAiOjE2MDkwMDI3MTZ9.VDCfTNSn4Gh0_DOftGr4_Bfsaeri-6sUsF_pVwvW3gc', 'Content-Type': 'application/json'}})
 }
